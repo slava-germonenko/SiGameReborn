@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  users:
+    image: "user-profile-service"
+    hostname: "users"
+    ports:
+      - "4200:80"
+    depends_on:
+      - "azure-sql"
+    environment:
+      AppConfigurationConnectionString: "INSERT YOUR URL HERE. IF THIS IS BLANK, AZURE APP CONFIG WON'T BE PULLED."
+      ASPNETCORE_ENVIRONMENT: "Development"
+    build:
+      context: .
+      dockerfile: src/SiGameReborn.User.Api/
+  azure-sql:
+    image: "mcr.microsoft.com/azure-sql-edge"
+    hostname: "azure-sql"
+    environment:
+      ACCEPT_EULA: 1
+      MSSQL_SA_PASSWORD: "INSERT YOUR PASSWORD HERE"
+      MSSQL_USER: "SA"
+      MSSQL_PID: "Developer"
+    volumes:
+      - "azure-sql-storage"
+    ports:
+      - "4202:1433"
