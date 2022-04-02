@@ -16,7 +16,6 @@ if (!string.IsNullOrEmpty(appConfigurationConnectionString))
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUsersListService, UsersListService>();
 builder.Services.AddScoped<IUserProfileService, UserProfileService>();
@@ -29,12 +28,6 @@ builder.Services.AddDbContext<UserContext>(config =>
 });
 
 var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.MapControllers();
