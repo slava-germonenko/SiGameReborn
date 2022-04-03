@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Azure.AppConfiguration.AspNetCore" Version="5.0.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SiGameReborn.Tokens.Application\SiGameReborn.Tokens.Application.csproj" />
+      <ProjectReference Include="..\SiGameReborn.Tokens.Core\SiGameReborn.Tokens.Core.csproj" />
+    </ItemGroup>
+
+</Project>

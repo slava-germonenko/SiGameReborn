@@ -2,7 +2,11 @@ namespace SiGameReborn.Common.Domain.Models.Paging;
 
 public record PageDescriptor
 {
-    public int Count { get; set; }
+    public const int DefaultCount = 50;
 
-    public int Offset { get; set; }
+    public const int DefaultOffset = 0;
+
+    public int Count { get; set; } = DefaultCount;
+
+    public int Offset { get; set; } = DefaultOffset;
 }
