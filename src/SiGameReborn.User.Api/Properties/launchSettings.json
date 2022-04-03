@@ -17,7 +17,7 @@
       "applicationUrl": "https://localhost:7236;http://localhost:5117",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "AppConfigurationConnectionString": "Endpoint=https://testing-si-game-reborn-app-configuration.azconfig.io;Id=N+Ga-l9-s0:Fzn8SoNC3OPWakZhRIXD;Secret=tqdhkQ1Wr7w781rYT4kDPzbz1P49wVVo7MmBb/6od8g="
+        "AppConfigurationConnectionString": ""
       }
     }
   }
