@@ -32,25 +32,25 @@ public class ExceptionHandlingMiddleware
         }
         catch (BadHttpRequestException e)
         {
-            await WriteResponse(context, HttpStatusCode.BadRequest, new BaseApiResponse(e.Message));
+            await WriteResponse(context, HttpStatusCode.BadRequest, new BaseErrorResponse(e.Message));
         }
         catch (DuplicateException e)
         {
-            await WriteResponse(context, HttpStatusCode.BadRequest, new BaseApiResponse(e.Message));
+            await WriteResponse(context, HttpStatusCode.BadRequest, new BaseErrorResponse(e.Message));
         }
         catch (ValidationException e)
         {
-            await WriteResponse(context, HttpStatusCode.BadRequest, new BaseApiResponse(e.Message));
+            await WriteResponse(context, HttpStatusCode.BadRequest, new BaseErrorResponse(e.Message));
         }
         catch (NotFoundException e)
         {
-            await WriteResponse(context, HttpStatusCode.NotFound, new BaseApiResponse(e.Message));
+            await WriteResponse(context, HttpStatusCode.NotFound, new BaseErrorResponse(e.Message));
         }
         catch (Exception e)
         {
             var apiResponse = environment.IsDevelopment()
-                ? new DeveloperErrorApiResponse(e.Message, e.StackTrace)
-                : new BaseApiResponse("Произошла непредвиденная ошибка! Пожалуйста, свяжитесь с администрацией.");
+                ? new DeveloperErrorErrorResponse(e.Message, e.StackTrace)
+                : new BaseErrorResponse("Произошла непредвиденная ошибка! Пожалуйста, свяжитесь с администрацией.");
             await WriteResponse(context, HttpStatusCode.InternalServerError, apiResponse);
         }
     }

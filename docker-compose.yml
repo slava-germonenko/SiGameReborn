@@ -6,8 +6,6 @@ services:
     hostname: "users"
     ports:
       - "8000:80"
-    depends_on:
-      - "azure-sql"
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
     build:
@@ -18,28 +16,20 @@ services:
       hostname: "tokens"
       ports:
         - "8001:80"
-      depends_on:
-        - "azure-sql"
       environment:
         ASPNETCORE_ENVIRONMENT: "Development"
       build:
         context: .
         dockerfile: src/SiGameReborn.Tokens.Api/Dockerfile
-  azure-sql:
-    image: "mcr.microsoft.com/azure-sql-edge"
-    hostname: "azure-sql"
-    environment:
-      ACCEPT_EULA: 1
-      MSSQL_SA_PASSWORD: ":8jNZdK7cK"
-      MSSQL_USER: "SA"
-      MSSQL_PID: "Developer"
-    volumes:
-      - azure-sql-storage:/var/opt/mssql-extensibility/data
-      - azure-sql-storage:/var/opt/mssql-extensibility/log
-      - azure-sql-storage:/var/opt/mssql-extensibility
+  registration:
+    image: "registration-service"
+    hostname: "registration"
     ports:
-      - "1433:1433"
-
-volumes:
-  azure-sql-storage:
-    external: true
+      - "8002:80"
+    depends_on:
+      - "users"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+    build:
+      context: .
+      dockerfile: src/SiGameReborn.Registration.Api/Dockerfile
