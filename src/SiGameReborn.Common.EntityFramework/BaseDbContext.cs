@@ -28,7 +28,7 @@ public abstract class BaseDbContext : DbContext
         foreach (var updatedEntry in updatedEntries)
         {
             updatedEntry.Entity.UpdatedDate = null;
-            updatedEntry.Entity.UpdatedDate = DateTime.UtcNow;
+            updatedEntry.Entity.CreatedDate = DateTime.UtcNow;
         }
     }
 

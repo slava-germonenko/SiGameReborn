@@ -30,7 +30,7 @@ public class UserPasswordsController : ControllerBase
         return Ok(activePassword);
     }
 
-    [HttpPost("{userId:guid}/password")]
+    [HttpPost("{userId:guid}/passwords")]
     public async Task<ActionResult<UserPassword>> PushPasswordAsync(Guid userId, UserPassword password)
     {
         password.UserId = userId;

@@ -1,6 +1,6 @@
 namespace SiGameReborn.Common.Domain.Models;
 
-public abstract class BaseEntity : IBaseEntity
+public class BaseEntity : IBaseEntity
 {
     public Guid Id { get; set; }
 

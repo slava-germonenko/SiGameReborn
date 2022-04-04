@@ -13,6 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\SiGameReborn.Common.Constants\SiGameReborn.Common.Constants.csproj" />
       <ProjectReference Include="..\SiGameReborn.Common.Web\SiGameReborn.Common.Web.csproj" />
       <ProjectReference Include="..\SiGameReborn.User.Application\SiGameReborn.User.Application.csproj" />
       <ProjectReference Include="..\SiGameReborn.User.Core\SiGameReborn.User.Core.csproj" />

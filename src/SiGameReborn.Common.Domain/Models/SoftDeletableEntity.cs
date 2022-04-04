@@ -1,6 +1,6 @@
 namespace SiGameReborn.Common.Domain.Models;
 
-public abstract class SoftDeletableEntity : BaseEntity, ISoftDeletableEntity
+public class SoftDeletableEntity : BaseEntity, ISoftDeletableEntity
 {
     private DateTime? _deletedDate;
 

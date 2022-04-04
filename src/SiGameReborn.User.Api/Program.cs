@@ -1,7 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 
+using SiGameReborn.User.Api.Configuration;
 using SiGameReborn.User.Api.Middleware;
+using SiGameReborn.User.Api.Options;
 using SiGameReborn.User.Application.Services;
+using SiGameReborn.User.Application.Services.Configuration;
 using SiGameReborn.User.Core;
 using SiGameReborn.User.Core.Services;
 
@@ -17,6 +20,9 @@ if (!string.IsNullOrEmpty(appConfigurationConnectionString))
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
+builder.Services.Configure<Passwords>(builder.Configuration.GetSection(nameof(Passwords)));
+builder.Services.AddScoped<IPasswordsConfiguration, OptionsPasswordsConfiguration>();
+builder.Services.AddScoped<IPasswordsService, PasswordsService>();
 builder.Services.AddScoped<IUsersListService, UsersListService>();
 builder.Services.AddScoped<IUserProfileService, UserProfileService>();
 builder.Services.AddScoped<IUserPasswordService, UserPasswordService>();
